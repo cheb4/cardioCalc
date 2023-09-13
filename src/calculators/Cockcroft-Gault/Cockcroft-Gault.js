@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+import Header from "../../Header/Header";
+import Footer from "../../Footer/Footer";
+
 const CockcroftGaultCalculator = () => {
   const [age, setAge] = useState(0);
   const [weight, setWeight] = useState(0);
@@ -19,48 +22,77 @@ const CockcroftGaultCalculator = () => {
 
   return (
     <div>
-      <h1>Cockcroft-Gault eGFR Calculator</h1>
-      <label>
-        Age (years):
-        <input
-          type="number"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Weight (kg):
-        <input
-          type="number"
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Serum Creatinine (mg/dL):
-        <input
-          type="number"
-          value={serumCreatinineMgDl}
-          onChange={(e) => setSerumCreatinineMgDl(e.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Gender:
-        <select
-          value={isMale}
-          onChange={(e) => setIsMale(e.target.value === "true")}
-        >
-          <option value={true}>Male</option>
-          <option value={false}>Female</option>
-        </select>
-      </label>
-      <br />
-      <button onClick={calculate}>Calculate eGFR</button>
-      <br />
-      {eGFR !== 0 && <p>eGFR: {eGFR.toFixed(2)} mL/min</p>}
+      <Header />
+      <h1>Kreatinino klirensas</h1>
+      <div className="formContainer">
+        <label className="cockroft-age">
+          Age (years):
+          <input
+            type="number"
+            value={age}
+            onChange={(e) => {
+              setAge(e.target.value);
+              calculate();
+            }}
+          />
+        </label>
+        <br />
+        <label className="cockroft-weight">
+          Weight (kg):
+          <input
+            type="number"
+            value={weight}
+            onChange={(e) => {
+              setWeight(e.target.value);
+              calculate();
+            }}
+          />
+        </label>
+        <br />
+        <label className="cockroft-serum">
+          Serum Creatinine (µmol/l):
+          <input
+            type="number"
+            value={serumCreatinineMgDl}
+            onChange={(e) => {
+              setSerumCreatinineMgDl(e.target.value);
+              calculate();
+            }}
+          />
+        </label>
+        <br />
+        <label>
+          Gender:
+          <select
+            value={isMale}
+            onChange={(e) => setIsMale(e.target.value === "true")}
+          >
+            <option value={true}>Male</option>
+            <option value={false}>Female</option>
+          </select>
+        </label>
+        <br />
+        <button onClick={calculate}>Calculate eGFR</button>
+        <br />
+        <p>
+          eGFR: {eGFR.toFixed(2)} mL/min{" "}
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(eGFR.toFixed(2));
+            }}
+          >
+            kopijuoti
+          </button>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(eGFR.toFixed(2) + " mL/min");
+            }}
+          >
+            kopijuoti su mL/min
+          </button>
+        </p>
+      </div>
+      <Footer />
     </div>
   );
 };
