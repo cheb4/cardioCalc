@@ -26,7 +26,7 @@ const CockcroftGaultCalculator = () => {
       <h1>Kreatinino klirensas</h1>
       <div className="formContainer">
         <label className="cockroft-age">
-          Age (years):
+          Amžius (metais):
           <input
             type="number"
             value={age}
@@ -38,7 +38,7 @@ const CockcroftGaultCalculator = () => {
         </label>
         <br />
         <label className="cockroft-weight">
-          Weight (kg):
+          Svoris (kg):
           <input
             type="number"
             value={weight}
@@ -50,7 +50,7 @@ const CockcroftGaultCalculator = () => {
         </label>
         <br />
         <label className="cockroft-serum">
-          Serum Creatinine (µmol/l):
+          Kreatino kazkas ?? (µmol/l):
           <input
             type="number"
             value={serumCreatinineMgDl}
@@ -62,13 +62,17 @@ const CockcroftGaultCalculator = () => {
         </label>
         <br />
         <label>
-          Gender:
+          Lytis:
           <select
+            className="creatine-select"
             value={isMale}
-            onChange={(e) => setIsMale(e.target.value === "true")}
+            onChange={(e) => {
+              setIsMale(e.target.value === "true");
+              calculate();
+            }}
           >
-            <option value={true}>Male</option>
-            <option value={false}>Female</option>
+            <option value={true}>Vyriška</option>
+            <option value={false}>Moteriška</option>
           </select>
         </label>
         <br />
