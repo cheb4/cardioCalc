@@ -53,11 +53,16 @@ const Chad2svasc = () => {
   ]);
 
   useEffect(() => {
-    if (ageMorethan75 === 2 && ageBetween65And74 === 1) {
-      setAgeBetween65And74(0);
+    if (ageBetween65And74 === 1) {
       setAgeMorethan75(0);
     }
-  }, [ageMorethan75, ageBetween65And74]);
+  }, [ageBetween65And74]);
+
+  useEffect(() => {
+    if (ageMorethan75 === 2) {
+      setAgeBetween65And74(0);
+    }
+  }, [ageMorethan75]);
 
   useEffect(() => {
     setHasbledScore(
