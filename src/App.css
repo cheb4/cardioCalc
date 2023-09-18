@@ -31,10 +31,33 @@
   color: #000;
   cursor: pointer;
 }
-
+/*chad table */
+.chadContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
 .chad-risk-table td {
   border: 1px solid black;
 }
 .risk-selected-active {
   background-color: red;
+}
+.score-active {
+  background-color: red;
+}
+.chadScoreContainer td {
+  border: 1px solid black;
+}
+.hasbledContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+.hasbled td,
+th {
+  border: 1px solid black;
+}
+
+.hasbledScore td,
+th {
+  border: 1px solid black;
 }
