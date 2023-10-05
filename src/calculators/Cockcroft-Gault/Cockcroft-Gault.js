@@ -14,9 +14,9 @@ const CockcroftGaultCalculator = () => {
     const constant = isMale ? 1 : 0.85;
     const k = isMale ? 1.23 : 1.04;
     // Convert serum creatinine from mg/dL to µmol/L
-    const serumCreatinineUmolL = serumCreatinineMgDl * 88.4;
+    // const serumCreatinineUmolL = serumCreatinineMgDl * 88.4;
     const calculatedEGFR =
-      ((140 - age) * weight * constant) / (serumCreatinineUmolL * k);
+      ((140 - age) * weight * constant) / serumCreatinineMgDl;
     setEGFR(calculatedEGFR);
   };
 
@@ -50,7 +50,7 @@ const CockcroftGaultCalculator = () => {
         </label>
         <br />
         <label className="cockroft-serum">
-          Kreatino kazkas ?? (µmol/l):
+          Kreatinas (µmol/l):
           <input
             type="number"
             value={serumCreatinineMgDl}

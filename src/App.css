@@ -61,3 +61,14 @@ th {
 th {
   border: 1px solid black;
 }
+/* navigation bar style */
+nav {
+  width: 100%;
+  background-color: aliceblue;
+  padding: 1%;
+}
+/* .footer {
+  width: 100%;
+  background-color: aliceblue;
+  padding: 1%;
+} */
